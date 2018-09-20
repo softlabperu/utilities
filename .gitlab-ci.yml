@@ -15,6 +15,8 @@ build-master:
     - docker push "$REGISTRY_URL/$CI_PROJECT_NAME"
   only:
     - master
+  tags:
+    - docker
 
 build:
   stage: build
@@ -23,3 +25,5 @@ build:
     - docker push "$REGISTRY_URL/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG"
   except:
     - master
+  tags:
+    - docker

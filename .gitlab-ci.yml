@@ -5,14 +5,12 @@ before_script:
 
 variables:
   GIT_SSL_NO_VERIFY: "true"
-  REGISTRY_URL: "172.20.0.6:5000"
-
 
 build-master:
   stage: build
   script:
-    - docker build --pull -t "$REGISTRY_URL/$CI_PROJECT_NAME" .
-    - docker push "$REGISTRY_URL/$CI_PROJECT_NAME"
+    - docker build --pull -t "$REGISTRY_HOST/$CI_PROJECT_NAME" .
+    - docker push "$REGISTRY_HOST/$CI_PROJECT_NAME"
   only:
     - master
   tags:
@@ -21,8 +19,8 @@ build-master:
 build:
   stage: build
   script:
-    - docker build --pull -t "$REGISTRY_URL/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG" .
-    - docker push "$REGISTRY_URL/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG"
+    - docker build --pull -t "$REGISTRY_HOST/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG" .
+    - docker push "$REGISTRY_HOST/$CI_PROJECT_NAME:$CI_COMMIT_REF_SLUG"
   except:
     - master
   tags:

@@ -14,7 +14,7 @@ build-master:
   only:
     - master
   tags:
-    - docker
+    - docker-bot
 
 build:
   stage: build
@@ -24,4 +24,4 @@ build:
   except:
     - master
   tags:
-    - docker
+    - docker-bot

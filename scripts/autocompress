@@ -1,9 +1,10 @@
 #!/bin/bash
-if [ -f .pakage ]
+if [ -f .package ]
 then
     usage()
     {
         echo "usage: [[-n <namefile>] | [-h]]"
+        exit 1
     }
 ### MAIN
     case $1 in
@@ -23,5 +24,6 @@ then
     esac
     shift
 else
-    echo "No existe archivo pakage"
+    echo "No existe archivo .package"
+    exit 1
 fi
